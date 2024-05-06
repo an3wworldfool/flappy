@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dvvrqh080a2g2"]
+[gd_scene load_steps=8 format=3 uid="uid://dvvrqh080a2g2"]
 
 [ext_resource type="Script" path="res://scenes/game_over.gd" id="1_w4jf6"]
 [ext_resource type="Texture2D" uid="uid://c57fej47adq38" path="res://assets/restart.png" id="2_0il8w"]
@@ -12,6 +12,22 @@ texture = ExtResource("2_0il8w")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7asry"]
 texture = ExtResource("2_0il8w")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7fuax"]
+bg_color = Color(0.415686, 0.388235, 0.776471, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oeqsg"]
+bg_color = Color(0.415686, 0.388235, 0.776471, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 0.403922, 1)
+
 [node name="GameOver" type="CanvasLayer"]
 script = ExtResource("1_w4jf6")
 
@@ -24,4 +40,19 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_u30kv")
 theme_override_styles/hover = SubResource("StyleBoxTexture_4xi7d")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_7asry")
 
+[node name="ViewRankingButton" type="Button" parent="."]
+offset_left = 342.0
+offset_top = 450.0
+offset_right = 502.0
+offset_bottom = 513.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_7fuax")
+theme_override_styles/hover = SubResource("StyleBoxFlat_oeqsg")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_oeqsg")
+text = "View Ranking"
+
 [connection signal="pressed" from="RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="ViewRankingButton" to="." method="_on_view_ranking_button_pressed"]

@@ -1,0 +1,72 @@
+[gd_scene load_steps=3 format=3 uid="uid://ckpd1xumj7tia"]
+
+[ext_resource type="Script" path="res://scenes/leaderboard.gd" id="1_15g21"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qoy07"]
+bg_color = Color(0.419608, 0.301961, 0.992157, 1)
+
+[node name="Leaderboard" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_15g21")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 2
+offset_right = 864.0
+offset_bottom = 936.0
+color = Color(0.435294, 0.454902, 1, 1)
+
+[node name="LeaderboardVContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(2.08165e-12, 24)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleLabel" type="Label" parent="LeaderboardVContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Ranking"
+horizontal_alignment = 1
+
+[node name="LeaderboardTree" type="Tree" parent="LeaderboardVContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 700)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+columns = 4
+
+[node name="RecordLabel" type="RichTextLabel" parent="LeaderboardVContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 72)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/bold_font_size = 32
+theme_override_font_sizes/italics_font_size = 32
+theme_override_font_sizes/bold_italics_font_size = 32
+theme_override_font_sizes/mono_font_size = 32
+bbcode_enabled = true
+tab_size = 3
+
+[node name="ActualScoreTree" type="Tree" parent="LeaderboardVContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 36)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/panel = SubResource("StyleBoxFlat_qoy07")
+columns = 2
+
+[node name="CloseButton" type="Button" parent="LeaderboardVContainer"]
+custom_minimum_size = Vector2(200, 2.08165e-12)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 32
+text = "Close"
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+
+[connection signal="pressed" from="LeaderboardVContainer/CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="request_completed" from="HTTPRequest" to="." method="_on_http_request_request_completed"]

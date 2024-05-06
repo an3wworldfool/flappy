@@ -1,17 +1,19 @@
 extends Node
 
 @export var pipe_scene : PackedScene
-
 var game_running: bool
 var game_over: bool
 var scroll
-var score
+var score: int
 const SCROLL_SPEED : int = 4
 var screen_size : Vector2i
 var ground_height : int
 var pipes : Array
 const PIPE_DELAY: int = 100
 const PIPE_RANGE : int = 200
+var username: String = "user101"
+var new_record: bool = false
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -90,6 +92,7 @@ func check_top():
 func stop_game():
 	$PipeTimer.stop()
 	$GameOver.show()
+	Global.score = score
 	$Bird.flying = false
 	game_running = false
 	game_over = true
@@ -105,3 +108,7 @@ func _on_ground_hit():
 
 func _on_game_over_restart():
 	new_game()
+	
+func _on_request_completed(result, response_code, headers, body):
+	var json = JSON.parse_string(body.get_string_from_utf8())
+	print(json)
