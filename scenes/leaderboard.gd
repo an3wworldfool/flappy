@@ -14,8 +14,8 @@ func _ready():
 func _on_request_completed(result, response_code, headers, body) -> void:
 	var json = JSON.parse_string(body.get_string_from_utf8())
 	#print(json)
-	new_record = json["body"]["new_record"]
-	fill_leaderboard(json["body"]["Items"])
+	new_record = json["new_record"]
+	fill_leaderboard(json["Items"])
 
 
 func _on_close_button_pressed() -> void:
