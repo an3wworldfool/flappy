@@ -1,0 +1,81 @@
+{
+    "Metadata": {
+        "TemplateId": "arn:aws:cloudformation:us-east-1:730335607865:generatedTemplate/f67b8f48-7ea5-4597-a29d-7c41617dd8e3"
+    },
+    "Resources": {
+        "DynamoDBTable00LeaderboardTable00BOgeq": {
+            "UpdateReplacePolicy": "Retain",
+            "Type": "AWS::DynamoDB::Table",
+            "DeletionPolicy": "Retain",
+            "Properties": {
+                "SSESpecification": {
+                    "SSEEnabled": false
+                },
+                "ContributorInsightsSpecification": {
+                    "Enabled": false
+                },
+                "PointInTimeRecoverySpecification": {
+                    "PointInTimeRecoveryEnabled": false
+                },
+                "ProvisionedThroughput": {
+                    "WriteCapacityUnits": 1,
+                    "ReadCapacityUnits": 1
+                },
+                "TableName": "LeaderboardTable",
+                "AttributeDefinitions": [
+                    {
+                        "AttributeType": "N",
+                        "AttributeName": "gsi1_pk"
+                    },
+                    {
+                        "AttributeType": "N",
+                        "AttributeName": "high_score"
+                    },
+                    {
+                        "AttributeType": "S",
+                        "AttributeName": "username"
+                    }
+                ],
+                "BillingMode": "PROVISIONED",
+                "GlobalSecondaryIndexes": [
+                    {
+                        "IndexName": "gsi1_pk-high_score-index",
+                        "Projection": {
+                            "ProjectionType": "ALL",
+                            "NonKeyAttributes": []
+                        },
+                        "ProvisionedThroughput": {
+                            "WriteCapacityUnits": 1,
+                            "ReadCapacityUnits": 1
+                        },
+                        "KeySchema": [
+                            {
+                                "KeyType": "HASH",
+                                "AttributeName": "gsi1_pk"
+                            },
+                            {
+                                "KeyType": "RANGE",
+                                "AttributeName": "high_score"
+                            }
+                        ],
+                        "ContributorInsightsSpecification": {
+                            "Enabled": false
+                        }
+                    }
+                ],
+                "KeySchema": [
+                    {
+                        "KeyType": "HASH",
+                        "AttributeName": "username"
+                    }
+                ],
+                "DeletionProtectionEnabled": false,
+                "TableClass": "STANDARD",
+                "Tags": [],
+                "TimeToLiveSpecification": {
+                    "Enabled": false
+                }
+            }
+        }
+    }
+}
