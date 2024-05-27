@@ -12,3 +12,5 @@ La estructura de la tabla esta descrita en LeaderboardTableTemplate.json, que es
 Leaderboard implementado en branch final.
 
 Juego base en branch main.
+
+Gracias a [Coding With Russ](https://www.youtube.com/@CodingWithRuss) por los assets y el tutorial de flappy bird.
