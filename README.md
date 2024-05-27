@@ -10,4 +10,5 @@ La estructura de la tabla esta descrita en LeaderboardTableTemplate.json, que es
 ![SS de Tabla](tableSS.png)
 
 Leaderboard implementado en branch final.
+
 Juego base en branch main.
